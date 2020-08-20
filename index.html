@@ -34,10 +34,14 @@
             <button id="contacts"><i class="fas fa-address-book"></i></button>
             <a href="http://linkedin.com/"> <i class="fab fa-linkedin"></i></a>
           </div>
+          <!-- CONTACTS -->
           <div class="contacts hide">
-            <button class="add-contact">
-              <i class="fas fa-plus"></i>
-            </button>
+            <div class="contacts-header">
+              <button class="add-contact">
+                <i class="fas fa-plus"></i>
+              </button>
+              <h1>CONTACTS</h1>
+            </div>
             <div class="contact-data"></div>
           </div>
           <!-- MODAL-->
@@ -55,10 +59,19 @@
                   class="input-number"
                   type="tel"
                   placeholder="0949 *** ***"
+                  required
                 />
               </span>
               <button class="submit-new">add new one</button>
             </form>
+          </div>
+          <!-- ASK MODAL -->
+          <div class="modal-question hide-modal">
+            <h1 class="question"></h1>
+            <span>
+              <button id="yes">YES</button>
+              <button id="no">NO</button>
+            </span>
           </div>
         </div>
       </main>

@@ -105,8 +105,20 @@ body {
   overflow-x: hidden;
   transition: 1s;
 }
+.contacts-header {
+  top: 0;
+  position: sticky;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  font-family: "Megrim", cursive;
+  background: black;
+  border-bottom: solid 1px purple;
+}
 .contact-data {
-  height: 100%;
+  height: calc(100% - 50px);
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -122,6 +134,7 @@ body {
   border-radius: 20px;
   box-shadow: inset 0px 0px 5px rgb(20, 20, 20);
 }
+
 .hide {
   right: -25% !important;
 }
@@ -144,6 +157,42 @@ body {
   transition: 0.1s;
 }
 .add-contact:hover {
+  background: white;
+  color: black;
+}
+.modal-question {
+  font-family: "Megrim", cursive;
+  position: absolute;
+  text-transform: uppercase;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  transition: 0.8s;
+}
+.modal-question button {
+  width: 200px;
+  height: 40px;
+  margin: 20px;
+  font-size: 16px;
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: solid 1px white;
+  cursor: pointer;
+  transition: 0.3s;
+  outline: none;
+}
+.modal-question h1 {
+  font-size: 40px;
+}
+.modal-question button:hover {
   background: white;
   color: black;
 }
@@ -198,6 +247,15 @@ body {
 .submit-new:hover {
   background: white;
   color: black;
+}
+.name {
+  font-size: 12px;
+  margin: 5px 0px;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+.number {
+  pointer-events: none;
 }
 .close {
   position: absolute;

@@ -10,8 +10,61 @@ const closeModal = document.querySelector(".close");
 const addContact = document.querySelector(".add-contact");
 
 const submitNewContact = document.querySelector(".submit-new");
+const accept = document.getElementById("yes");
+const decline = document.getElementById("no");
+const question = document.querySelector(".question");
+const modelQuestion = document.querySelector(".modal-question");
 
 let d = new Date();
+let contacts = [];
+
+const RandomID = (dlzka) => {
+  let heslo = "";
+  let pismena = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    0,
+  ];
+
+  for (let i = 0; i < dlzka; i++) {
+    heslo += pismena[Math.floor(Math.random() * pismena.length)];
+  }
+
+  return heslo;
+};
 
 const loadDate = () => {
   let mesiac = d.getMonth() + 1;
@@ -129,15 +182,13 @@ closeModal.addEventListener("click", () => {
   contactBox.classList.add("show");
 });
 
-let contacts = [];
-
 const loadData = () => {
   contactData.innerHTML = "";
   if (contacts.length <= 0) {
   } else {
-    contacts.forEach((data, index) => {
+    contacts.forEach((data) => {
       contactData.innerHTML += `
-      <div class="contact" id=${index}>
+      <div class="contact" id=${data.id}>
       <p class="name">${data.name}</p>
       <p class="number">${data.number}</p>
       </div>
@@ -153,7 +204,7 @@ submitNewContact.addEventListener("click", async (e) => {
 
   if (name == "" && (number == undefined || number == null || number == "")) {
   } else {
-    contacts.push({ name, number });
+    contacts.push({ id: RandomID(10), name, number });
     await loadData();
     modal.classList.add("hide-modal");
     modal.classList.remove("show-modal");
@@ -166,7 +217,6 @@ submitNewContact.addEventListener("click", async (e) => {
 });
 
 document.addEventListener("click", (e) => {
-  console.log(e.target);
   if (
     e.target.classList.contains("hero-text") &&
     contactBox.classList.contains("show")
@@ -177,3 +227,37 @@ document.addEventListener("click", (e) => {
     hide = !hide;
   }
 });
+
+const ENSURE = (question_input, name, id) => {
+  modelQuestion.classList.add("show-modal");
+  question.innerText = question_input + name;
+
+  accept.addEventListener("click", () => {
+    modelQuestion.classList.remove("show-modal");
+    modelQuestion.classList.add("hide-modal");
+    contacts.splice(id, 1);
+    loadData();
+  });
+
+  decline.addEventListener("click", () => {
+    modelQuestion.classList.remove("show-modal");
+    modelQuestion.classList.add("hide-modal");
+
+    return false;
+  });
+};
+
+const DeleteData = async () => {
+  await loadData();
+  contactData.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (e.target.classList.contains("contact")) {
+      const ITEM_TO_DELETE = contacts.findIndex(
+        (contact) => contact.id === e.target.id
+      );
+      ENSURE("WANT TO DELETE ", contacts[ITEM_TO_DELETE].name, ITEM_TO_DELETE);
+    }
+  });
+};
+
+DeleteData();
