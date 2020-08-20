@@ -1,0 +1,230 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+::selection {
+  background: rgba(0, 0, 0, 0.4);
+}
+html,
+body {
+  min-height: 100vh;
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: black;
+}
+.hero-text {
+  font-family: "Megrim", cursive;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}
+.hero-text h1 {
+  font-size: 80px;
+  color: white;
+  pointer-events: none;
+  text-shadow: 1px 1px 1px black;
+}
+.widgets {
+  font-size: 40px;
+  width: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  place-self: center;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 10px;
+  border-radius: 30px;
+}
+.widgets a {
+  color: white;
+  transition: 0.3s;
+}
+.widgets a:hover {
+  transform: scale(1.1);
+}
+.active {
+  transform: scale(1.1);
+}
+.widgets button {
+  height: 40px;
+  width: 40px;
+  font-size: 40px;
+  color: white;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.widgets button:hover {
+  transform: scale(1.1);
+}
+
+.container {
+  height: 100vh;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wrapper {
+  position: relative;
+  transform: rotateY(0deg);
+  transform-origin: left;
+  perspective: 100px;
+  min-height: 80vh;
+  width: 70vw;
+  display: grid;
+  grid-template-rows: 80% 20%;
+  background: url("../img/bg.jpg") center;
+  background-size: cover;
+  border-radius: 5px;
+  box-shadow: 0px 0px 100px purple;
+  overflow: hidden;
+}
+.contacts {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 25%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  color: white;
+  overflow-y: scroll;
+  align-items: center;
+  overflow-x: hidden;
+  transition: 1s;
+}
+.contact-data {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.contact {
+  width: 70%;
+  height: 80px;
+  font-family: sans-serif;
+  background-color: rgba(0, 0, 0, 0.4);
+  margin: 5px 0px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  box-shadow: inset 0px 0px 5px rgb(20, 20, 20);
+}
+.hide {
+  right: -25% !important;
+}
+.show {
+  right: 0;
+}
+
+.add-contact {
+  color: white;
+  background: transparent;
+  border: solid 2px white;
+  font-size: 15px;
+  position: absolute;
+  padding: 6px 8px;
+  border-radius: 50%;
+  left: 10px;
+  top: 10px;
+  cursor: pointer;
+  outline: none;
+  transition: 0.1s;
+}
+.add-contact:hover {
+  background: white;
+  color: black;
+}
+.modal {
+  font-family: "Megrim", cursive;
+  position: absolute;
+  text-transform: uppercase;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  transition: 0.8s;
+}
+.modal span {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+.modal label {
+  margin-bottom: 5px;
+}
+.modal h1 {
+  margin-bottom: 100px;
+}
+.modal input {
+  padding-left: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  border: solid 1px white;
+  width: 300px;
+  margin-bottom: 40px;
+  height: 40px;
+  color: white;
+}
+.submit-new {
+  width: 300px;
+  height: 40px;
+  font-size: 16px;
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: solid 1px white;
+  cursor: pointer;
+  transition: 0.3s;
+  outline: none;
+}
+.submit-new:hover {
+  background: white;
+  color: black;
+}
+.close {
+  position: absolute;
+  color: white;
+  top: 20px;
+  right: 20px;
+  height: 20px !important;
+  width: 20px !important;
+  border: none !important;
+  background: none !important;
+  font-size: 25px;
+  cursor: pointer;
+  outline: none;
+}
+.close:hover {
+  transform: scale(1.1);
+}
+
+.hide-modal {
+  left: -100%;
+}
+.show-modal {
+  left: 0%;
+}
+.rotate {
+  transition: 0.5s;
+}
+.rotate:hover {
+  transform: rotate(360deg);
+}

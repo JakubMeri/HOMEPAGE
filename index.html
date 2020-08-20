@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DESKTOP</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+      integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Megrim&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <main>
+        <div class="wrapper">
+          <div class="hero-text">
+            <h1 class="day"></h1>
+            <p class="date"></p>
+          </div>
+          <div class="widgets">
+            <a href="https://www.facebook.com/"
+              ><i class="fab fa-facebook-square"></i
+            ></a>
+            <a href="http://google.com/"
+              ><i class="fab fa-chrome rotate"></i
+            ></a>
+            <button id="contacts"><i class="fas fa-address-book"></i></button>
+            <a href="http://linkedin.com/"> <i class="fab fa-linkedin"></i></a>
+          </div>
+          <div class="contacts hide">
+            <button class="add-contact">
+              <i class="fas fa-plus"></i>
+            </button>
+            <div class="contact-data"></div>
+          </div>
+          <!-- MODAL-->
+          <div class="modal hide-modal">
+            <button class="close"><i class="fas fa-times"></i></button>
+            <h1>new contact</h1>
+            <form id="form-contact">
+              <span>
+                <label for="">Name:</label>
+                <input class="input-name" type="text" placeholder="Name" />
+              </span>
+              <span>
+                <label for="">Phone number:</label>
+                <input
+                  class="input-number"
+                  type="tel"
+                  placeholder="0949 *** ***"
+                />
+              </span>
+              <button class="submit-new">add new one</button>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="./src/contact.js"></script>
+  </body>
+</html>
