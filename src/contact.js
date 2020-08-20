@@ -255,7 +255,7 @@ const DeleteData = async () => {
       const ITEM_TO_DELETE = contacts.findIndex(
         (contact) => contact.id === e.target.id
       );
-      ENSURE("WANT TO DELETE ", contacts[ITEM_TO_DELETE].name, ITEM_TO_DELETE);
+      ENSURE("WANT TO DELETE: ", contacts[ITEM_TO_DELETE].name, ITEM_TO_DELETE);
     }
   });
 };
