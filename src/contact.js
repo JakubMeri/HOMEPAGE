@@ -16,7 +16,6 @@ const question = document.querySelector(".question");
 const modelQuestion = document.querySelector(".modal-question");
 
 let d = new Date();
-let contacts = [];
 
 const RandomID = (dlzka) => {
   let heslo = "";
@@ -184,6 +183,7 @@ closeModal.addEventListener("click", () => {
 
 const loadData = () => {
   contactData.innerHTML = "";
+  contacts = JSON.parse(localStorage.getItem("data"));
   if (contacts.length <= 0) {
   } else {
     contacts.forEach((data) => {
@@ -204,7 +204,10 @@ submitNewContact.addEventListener("click", async (e) => {
 
   if (name == "" && (number == undefined || number == null || number == "")) {
   } else {
+    contacts = JSON.parse(localStorage.getItem("data"));
+    console.log(contacts);
     contacts.push({ id: RandomID(10), name, number });
+    localStorage.setItem("data", JSON.stringify(contacts));
     await loadData();
     modal.classList.add("hide-modal");
     modal.classList.remove("show-modal");
@@ -228,31 +231,31 @@ document.addEventListener("click", (e) => {
   }
 });
 
+//ZDVOJENY VYPIS TREBA ZISTIT PRECO FUNKCIU VOLA AKO KEBY 2x
 const ENSURE = (question_input, name, id) => {
   modelQuestion.classList.add("show-modal");
   question.innerText = question_input + name;
 
   accept.addEventListener("click", () => {
+    contacts = JSON.parse(localStorage.getItem("data"));
     modelQuestion.classList.remove("show-modal");
     modelQuestion.classList.add("hide-modal");
     contacts.splice(id, 1);
+    localStorage.setItem("data", JSON.stringify(contacts));
     loadData();
   });
 
   decline.addEventListener("click", () => {
     modelQuestion.classList.remove("show-modal");
     modelQuestion.classList.add("hide-modal");
-
-    return false;
   });
 };
 
-const DeleteData = async () => {
-  await loadData();
+const DeleteData = () => {
   contactData.addEventListener("click", (e) => {
-    e.preventDefault();
     if (e.target.classList.contains("contact")) {
-      const ITEM_TO_DELETE = contacts.findIndex(
+      contacts = JSON.parse(localStorage.getItem("data"));
+      let ITEM_TO_DELETE = contacts.findIndex(
         (contact) => contact.id === e.target.id
       );
       ENSURE("WANT TO DELETE: ", contacts[ITEM_TO_DELETE].name, ITEM_TO_DELETE);
